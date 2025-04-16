@@ -112,6 +112,6 @@ const invitaions=await Invite.find({
         }
     }
 });
-console.log(invitaions)
+// console.log(invitaions)
 res.status(200).json(invitaions);
 };

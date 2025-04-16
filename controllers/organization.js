@@ -94,6 +94,9 @@ if(!r){
 
 
 };
+if(r.participants.some(p=>p.userId==userId)){
+    return res.status(200).json({msg:"already a member"})
+}
 const user=await User.findOne({_id:userId});
 r.participants.push({
     userId,
