@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 import {z as zod} from "zod";
 
 
-export const access_cookie={httpOnly:true,maxAge:24*60*60*1000,sameSite:"None",secure:true};
-export const refresh_cookie={httpOnly:true,maxAge:5*24*60*60*1000,sameSite:"None",secure:true}
+export const access_cookie={httpOnly:true,maxAge:24*60*60*1000,sameSite:"None",secure:true,path:'/'};
+export const refresh_cookie={httpOnly:true,maxAge:5*24*60*60*1000,sameSite:"None",secure:true,path:'/'}
 
 
 export const login=async(req,res)=>{
@@ -115,3 +115,24 @@ const invitaions=await Invite.find({
 // console.log(invitaions)
 res.status(200).json(invitaions);
 };
+
+
+
+export const logout=async(req,res)=>{
+    // console.log("hiiiii")
+    // console.log(req.cookies)
+    // console.log("ia m fine")
+    res.clearCookie("access_token", {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+        path: "/"
+      });
+      res.clearCookie("refresh_token", {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+        path: "/"
+      });
+      res.status(200).json({msg:"logged out successfully"})
+    }

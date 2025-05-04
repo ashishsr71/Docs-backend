@@ -10,7 +10,7 @@ import { authEndPoint } from "./config/liveblocks.js";
 import { auth } from "./middleware/auth-middleware.js";
 
 config();
-console.log(process.env.FRONTEND_URL)
+// console.log(process.env.FRONTEND_URL)
 
 
 const app=express();
